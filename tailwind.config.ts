@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for the event platform
+				'event-primary': '#6366F1', // indigo
+				'event-secondary': '#8B5CF6', // purple
+				'event-accent': '#4F46E5', // deeper indigo
+				'event-background': '#F9FAFB', // light gray
+				'event-text': '#1F2937', // dark gray
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
