@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,6 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { EventType } from '@/data/mockEvents';
 
 const formSchema = z.object({
   name: z.string().min(3, 'Event name must be at least 3 characters'),
@@ -47,14 +47,27 @@ const EventSubmissionForm: React.FC = () => {
       endDate: '',
       location: '',
       college: '',
-      eventType: 'workshop',
+      eventType: 'workshop' as EventType,
       link: '',
       image: '',
     },
   });
 
   const onSubmit = (data: FormValues) => {
-    addEvent(data);
+    // Ensure all required fields are present and typed correctly
+    const newEvent = {
+      name: data.name,
+      description: data.description, 
+      date: data.date,
+      endDate: data.endDate,
+      location: data.location,
+      college: data.college,
+      eventType: data.eventType,
+      link: data.link,
+      image: data.image || '',
+    };
+    
+    addEvent(newEvent);
     navigate('/');
   };
 
